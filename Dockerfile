@@ -14,10 +14,11 @@ WORKDIR /usr/app
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 
-# Enable corepack and install production dependencies only
-# Set CI=true to skip prepare scripts (like git hooks)
+# Enable corepack and install production dependencies
+# Use --ignore-scripts to skip all scripts, then rebuild only native modules
 RUN corepack enable && \
-    CI=true pnpm install --prod --frozen-lockfile
+    pnpm install --prod --frozen-lockfile --ignore-scripts && \
+    pnpm rebuild better-sqlite3
 
 # Copy the built output
 COPY --from=builder /usr/src/dist/output ./output
