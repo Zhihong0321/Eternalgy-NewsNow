@@ -15,8 +15,9 @@ COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 
 # Enable corepack and install production dependencies only
+# Set CI=true to skip prepare scripts (like git hooks)
 RUN corepack enable && \
-    pnpm install --prod --frozen-lockfile
+    CI=true pnpm install --prod --frozen-lockfile
 
 # Copy the built output
 COPY --from=builder /usr/src/dist/output ./output
