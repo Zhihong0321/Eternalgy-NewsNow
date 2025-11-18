@@ -490,5 +490,187 @@
     "home": "https://store.steampowered.com",
     "color": "blue",
     "interval": 600000
+  },
+  "pvmagazine": {
+    "name": "PV Magazine",
+    "column": "renewable",
+    "home": "https://www.pv-magazine.com",
+    "color": "yellow",
+    "interval": 1800000
+  },
+  "solarpowerworld": {
+    "name": "Solar Power World",
+    "column": "renewable",
+    "home": "https://www.solarpowerworldonline.com",
+    "color": "orange",
+    "interval": 1800000
+  },
+  "cleantechnica": {
+    "name": "CleanTechnica",
+    "column": "renewable",
+    "home": "https://cleantechnica.com",
+    "color": "green",
+    "interval": 1800000
+  },
+  "renewableenergyworld": {
+    "name": "Renewable Energy World",
+    "column": "renewable",
+    "home": "https://www.renewableenergyworld.com",
+    "color": "emerald",
+    "interval": 1800000
+  },
+  "rechargenews": {
+    "name": "Recharge News",
+    "column": "renewable",
+    "home": "https://www.rechargenews.com",
+    "color": "teal",
+    "interval": 1800000
+  },
+  "utilitydive": {
+    "name": "Utility Dive",
+    "column": "renewable",
+    "home": "https://www.utilitydive.com",
+    "color": "cyan",
+    "interval": 1800000
+  },
+  "renewablesnow": {
+    "name": "Renewables Now",
+    "column": "renewable",
+    "home": "https://renewablesnow.com",
+    "color": "lime",
+    "interval": 1800000
+  },
+  "canarymedia": {
+    "name": "Canary Media",
+    "column": "renewable",
+    "home": "https://www.canarymedia.com",
+    "color": "amber",
+    "interval": 1800000
+  },
+  "solarindustrymag": {
+    "name": "Solar Industry Magazine",
+    "column": "renewable",
+    "home": "https://solarindustrymag.com",
+    "color": "yellow",
+    "interval": 1800000
+  },
+  "irena": {
+    "name": "IRENA",
+    "column": "renewable",
+    "home": "https://www.irena.org",
+    "color": "blue",
+    "interval": 3600000
+  },
+  "eia": {
+    "name": "U.S. EIA",
+    "column": "renewable",
+    "home": "https://www.eia.gov",
+    "color": "indigo",
+    "interval": 1800000
+  },
+  "energystoragenews": {
+    "name": "Energy-Storage.news",
+    "column": "renewable",
+    "home": "https://www.energy-storage.news",
+    "color": "violet",
+    "interval": 1800000
+  },
+  "pvtech": {
+    "name": "PV Tech",
+    "column": "renewable",
+    "home": "https://www.pv-tech.org",
+    "color": "orange",
+    "interval": 1800000
+  },
+  "renewableenergyindustry": {
+    "name": "Renewable Energy Industry",
+    "column": "renewable",
+    "home": "https://www.renewable-energy-industry.com",
+    "color": "green",
+    "interval": 1800000
+  },
+  "solarbuildermag": {
+    "name": "Solar Builder Magazine",
+    "column": "renewable",
+    "home": "https://solarbuildermag.com",
+    "color": "amber",
+    "interval": 1800000
+  },
+  "europeanenergyinnovation": {
+    "name": "European Energy Innovation",
+    "column": "renewable",
+    "home": "https://www.europeanenergyinnovation.eu",
+    "color": "blue",
+    "interval": 1800000
+  },
+  "solarquarter": {
+    "name": "SolarQuarter",
+    "column": "renewable",
+    "home": "https://solarquarter.com",
+    "color": "yellow",
+    "interval": 1800000
+  },
+  "renewableenergyfocus": {
+    "name": "Renewable Energy Focus",
+    "column": "renewable",
+    "home": "https://www.renewableenergyfocus.com",
+    "color": "teal",
+    "interval": 1800000
+  },
+  "thestar": {
+    "name": "The Star Online",
+    "column": "malaysia",
+    "home": "https://www.thestar.com.my",
+    "color": "blue",
+    "interval": 1800000
+  },
+  "malaysiakini": {
+    "name": "Malaysiakini",
+    "column": "malaysia",
+    "home": "https://www.malaysiakini.com",
+    "color": "red",
+    "interval": 1800000
+  },
+  "freemalaysiatoday": {
+    "name": "Free Malaysia Today",
+    "column": "malaysia",
+    "home": "https://www.freemalaysiatoday.com",
+    "color": "orange",
+    "interval": 1800000
+  },
+  "malaymail": {
+    "name": "Malay Mail",
+    "column": "malaysia",
+    "home": "https://www.malaymail.com",
+    "color": "indigo",
+    "interval": 1800000
+  },
+  "nst": {
+    "name": "New Straits Times",
+    "column": "malaysia",
+    "home": "https://www.nst.com.my",
+    "color": "slate",
+    "interval": 1800000
+  },
+  "astroawani": {
+    "name": "Astro Awani",
+    "column": "malaysia",
+    "home": "https://www.astroawani.com",
+    "color": "purple",
+    "interval": 1800000
+  },
+  "theedgemarkets": {
+    "name": "The Edge Markets",
+    "column": "malaysia",
+    "home": "https://www.theedgemarkets.com",
+    "color": "emerald",
+    "interval": 1800000
+  },
+  "bernama": {
+    "name": "BERNAMA",
+    "column": "malaysia",
+    "home": "https://bernama.com",
+    "color": "cyan",
+    "interval": 1800000
   }
 }

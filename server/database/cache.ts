@@ -5,31 +5,35 @@ import type { CacheInfo, CacheRow } from "../types"
 
 export class Cache {
   private db
+  private tableName: string
   constructor(db: Database) {
     this.db = db
+    // Use table prefix if provided to avoid conflicts with existing tables
+    const prefix = process.env.TABLE_PREFIX || ""
+    this.tableName = prefix ? `${prefix}_cache` : "cache"
   }
 
   async init() {
     await this.db.prepare(`
-      CREATE TABLE IF NOT EXISTS cache (
+      CREATE TABLE IF NOT EXISTS ${this.tableName} (
         id TEXT PRIMARY KEY,
         updated INTEGER,
         data TEXT
       );
     `).run()
-    logger.success(`init cache table`)
+    logger.success(`init ${this.tableName} table`)
   }
 
   async set(key: string, value: NewsItem[]) {
     const now = Date.now()
     await this.db.prepare(
-      `INSERT OR REPLACE INTO cache (id, data, updated) VALUES (?, ?, ?)`,
+      `INSERT OR REPLACE INTO ${this.tableName} (id, data, updated) VALUES (?, ?, ?)`,
     ).run(key, JSON.stringify(value), now)
     logger.success(`set ${key} cache`)
   }
 
   async get(key: string): Promise<CacheInfo | undefined > {
-    const row = (await this.db.prepare(`SELECT id, data, updated FROM cache WHERE id = ?`).get(key)) as CacheRow | undefined
+    const row = (await this.db.prepare(`SELECT id, data, updated FROM ${this.tableName} WHERE id = ?`).get(key)) as CacheRow | undefined
     if (row) {
       logger.success(`get ${key} cache`)
       return {
@@ -42,7 +46,7 @@ export class Cache {
 
   async getEntire(keys: string[]): Promise<CacheInfo[]> {
     const keysStr = keys.map(k => `id = '${k}'`).join(" or ")
-    const res = await this.db.prepare(`SELECT id, data, updated FROM cache WHERE ${keysStr}`).all() as any
+    const res = await this.db.prepare(`SELECT id, data, updated FROM ${this.tableName} WHERE ${keysStr}`).all() as any
     const rows = (res.results ?? res) as CacheRow[]
 
     /**
@@ -67,7 +71,7 @@ export class Cache {
   }
 
   async delete(key: string) {
-    return await this.db.prepare(`DELETE FROM cache WHERE id = ?`).run(key)
+    return await this.db.prepare(`DELETE FROM ${this.tableName} WHERE id = ?`).run(key)
   }
 }
 

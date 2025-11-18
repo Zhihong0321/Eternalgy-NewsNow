@@ -63,6 +63,16 @@ if (process.env.VERCEL) {
       connector: "bun-sqlite",
     },
   }
+} else if (process.env.DATABASE_URL) {
+  // PostgreSQL for Railway or other platforms
+  nitroOption.database = {
+    default: {
+      connector: "postgresql",
+      options: {
+        url: process.env.DATABASE_URL,
+      },
+    },
+  }
 }
 
 export default function () {

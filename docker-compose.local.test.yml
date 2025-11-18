@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database (simulating your Railway PostgreSQL)
+  postgres:
+    image: postgres:16-alpine
+    container_name: newsnow-postgres-test
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: testdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testuser -d testdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # NewsNow App (built locally)
+  newsnow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: newsnow-app-test
+    ports:
+      - '4444:4444'
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4444
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://testuser:testpass@postgres:5432/testdb
+      - INIT_TABLE=true
+      - ENABLE_CACHE=true
+      - TABLE_PREFIX=newsnow
+      - JWT_SECRET=test-secret-key-for-local-testing-only
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    name: newsnow_postgres_test_data
