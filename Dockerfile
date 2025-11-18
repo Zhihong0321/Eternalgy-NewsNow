@@ -3,12 +3,20 @@ WORKDIR /usr/src
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 RUN corepack enable
-RUN pnpm install --no-frozen-lockfile
+RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm run build
 
 FROM node:20.12.2-alpine
 WORKDIR /usr/app
+
+# Copy package files for production dependencies
+COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
+
+# Enable corepack and install production dependencies only
+RUN corepack enable && \
+    pnpm install --prod --frozen-lockfile
 
 # Copy the built output
 COPY --from=builder /usr/src/dist/output ./output
