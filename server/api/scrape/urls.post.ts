@@ -1,5 +1,8 @@
 import * as cheerio from "cheerio"
 import type { NewsItem, SourceResponse } from "@shared/types"
+import { logger } from "#/utils/logger"
+
+import { myFetch } from "#/utils/fetch"
 
 interface ScrapeRequest {
   urls: string[]
