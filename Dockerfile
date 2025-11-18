@@ -1,6 +1,7 @@
 FROM node:20.12.2-alpine AS builder
 WORKDIR /usr/src
 COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches
 RUN corepack enable
 RUN pnpm install --frozen-lockfile
 COPY . .
