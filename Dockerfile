@@ -3,7 +3,7 @@ WORKDIR /usr/src
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
 RUN corepack enable
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 COPY . .
 RUN pnpm run build
 
