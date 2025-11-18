@@ -1,7 +1,7 @@
 import type { NewsItem } from "@shared/types"
 
 export default defineSource(async () => {
-  const rss = await rss2json("https://www.rechargenews.com/rss")
+  const rss = await rss2json("https://www.rechargenews.com/feed/latest")
   if (!rss) return []
 
   return rss.items.slice(0, 30).map((item): NewsItem => ({
