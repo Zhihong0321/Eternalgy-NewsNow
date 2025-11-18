@@ -21,7 +21,7 @@ RUN corepack enable && \
     pnpm rebuild better-sqlite3
 
 # Copy the built output
-COPY --from=builder /usr/src/dist/output ./output
+COPY --from=builder /usr/src/dist/output ./dist/output
 
 # Set environment variables with defaults
 ENV HOST=0.0.0.0
@@ -31,6 +31,6 @@ ENV NODE_ENV=production
 EXPOSE $PORT
 
 # Verify the file exists before starting
-RUN ls -la output/server/ || echo "Warning: output/server directory not found"
+RUN ls -la dist/output/server/ || echo "Warning: dist/output/server directory not found"
 
-CMD ["node", "output/server/index.mjs"]
+CMD ["node", "dist/output/server/index.mjs"]
